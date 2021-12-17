@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: pyms-istio-gateway
+spec:
+  selector:
+    app: istio-ingress # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pyms-istio-vs
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - pyms-istio-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: pyms-scaffold-v1-svc
+        port:
+          number: 5003
