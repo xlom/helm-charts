@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyms-scaffold-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scaffold-v1
+  template:
+    metadata:
+      labels:
+        app: scaffold-v1
+    spec:
+      containers:
+      - name: pyms-scaffold
+        image: pyms-scaffold_app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "200m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /healthz/live
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /healthz/ready
+            port: 5000
+---
+
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: pyms-scaffold-v2
+#spec:
+#  replicas: 0
+#  selector:
+#    matchLabels:
+#      app: scaffold-v2
+#  template:
+#    metadata:
+#      labels:
+#        app: scaffold-v2
+#    spec:
+#      containers:
+#      - name: pyms-scaffold
+#        image: pyms-scaffold_app
+#        imagePullPolicy: Never
+#        ports:
+#        - containerPort: 5000
+#        resources:
+#          requests:
+#            memory: "64Mi"
+#            cpu: "200m"
+#          limits:
+#            memory: "128Mi"
+#            cpu: "500m"
+#        livenessProbe:
+#          httpGet:
+#            path: /healthz/live
+#            port: 5000
+#        readinessProbe:
+#          httpGet:
+#            path: /healthz/ready
+#            port: 5000
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: pyms-scaffold-v1-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: scaffold-v1
+  ports:
+  - protocol: TCP
+    port: 5003
+    name: http-web
+    targetPort: 5000
+---
+
+#kind: Service
+#apiVersion: v1
+#metadata:
+#  name: pyms-scaffold-v2-svc
+#spec:
+#  selector:
+#    app: scaffold-v2
+#  ports:
+#  - protocol: TCP
+#    port: 5003
+#    targetPort: 5000
