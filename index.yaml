@@ -1,5 +1,27 @@
 apiVersion: v1
 entries:
+  addons:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-12-17T21:18:23.568248686Z"
+    description: A Helm chart for Kubernetes
+    digest: 6c5d7cda732f2a5ab528feba24a616527d54bf0eb11f0763835043f50231b550
+    name: addons
+    type: application
+    urls:
+    - https://github.com/xlom/helm-charts/releases/download/addons-0.1.0/addons-0.1.0.tgz
+    version: 0.1.0
+  istio-ingress:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-12-17T21:18:23.72433666Z"
+    description: A Helm chart for Kubernetes
+    digest: 26a1ea98978b0f593cf1a9cd01036de3b963c752a8982156645a8b590d4a72ca
+    name: istio-ingress
+    type: application
+    urls:
+    - https://github.com/xlom/helm-charts/releases/download/istio-ingress-0.1.0/istio-ingress-0.1.0.tgz
+    version: 0.1.0
   my-app:
   - apiVersion: v2
     appVersion: 1.16.0
