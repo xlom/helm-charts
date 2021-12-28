@@ -4,7 +4,8 @@ metadata:
   name: pyms-istio-gateway
 spec:
   selector:
-    app: istio-ingress # use Istio default gateway implementation
+    #app: istio-ingress # use Istio default gateway implementation
+    app: istio-ingressgateway # use Istio default gateway implementation
   servers:
   - port:
       number: 80
