@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pyms-scaffold
-        image: pyms-scaffold_app
+        image: pyms-scaffold-app
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
