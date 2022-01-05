@@ -4,7 +4,6 @@ metadata:
   name: pyms-istio-gateway
 spec:
   selector:
-    #app: istio-ingress # use Istio default gateway implementation
     app: istio-ingressgateway # use Istio default gateway implementation
   servers:
   - port:
@@ -31,4 +30,4 @@ spec:
     - destination:
         host: pyms-scaffold-v1-svc
         port:
-          number: 5003
+          number: {{ .Values.virtualService.port }}
