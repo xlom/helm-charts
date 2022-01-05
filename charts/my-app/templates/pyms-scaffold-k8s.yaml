@@ -76,8 +76,8 @@ data:
           url: "/ui/"
           project_dir: "project.views"
       config:
-        DEBUG: true
-        TESTING: true
+        DEBUG: false
+        TESTING: false
         APP_NAME: pyms-app
         APPLICATION_ROOT : /
         SQLALCHEMY_TRACK_MODIFICATIONS: true
