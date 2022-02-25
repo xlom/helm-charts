@@ -45,6 +45,16 @@ entries:
   my-app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-02-25T23:21:22.461932318Z"
+    description: A Helm chart for Kubernetes
+    digest: 3f031ae77409641357c87685f26c948166f0f402bd40ee08713c9b4de85e7e59
+    name: my-app
+    type: application
+    urls:
+    - https://github.com/xlom/helm-charts/releases/download/my-app-0.1.7/my-app-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-02-25T23:18:23.269350783Z"
     description: A Helm chart for Kubernetes
     digest: 079818f0da229714e1d70dda4560dbbe6e697548a7fafc22d88df566dbad677f
