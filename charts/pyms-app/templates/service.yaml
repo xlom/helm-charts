@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+# metadata:
+#   name: pyms-scaffold-v1-svc
+metadata:
+  name: {{ include "pyms-app.fullname" . }}
+  labels:
+    {{- include "pyms-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: scaffold-v1
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      name: http-web
+  selector:
+    {{- include "pyms-app.selectorLabels" . | nindent 4 }}

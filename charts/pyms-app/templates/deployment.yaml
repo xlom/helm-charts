@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyms-scaffold-v1
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: scaffold-v1
+  template:
+    metadata:
+      labels:
+        app: scaffold-v1
+    spec:
+      containers:
+      - name: pyms-scaffold
+        image: {{ .Values.image.repository }}
+        #imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "200m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /healthz/live
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /healthz/ready
+            port: 5000
+        env:
+          - name: PYMS_CONFIGMAP_FILE
+            value: "/usr/share/microservice/config.yaml"
+        volumeMounts:
+          - mountPath: /usr/share/microservice
+            name: ms-config-volume
+      volumes:
+        - name: ms-config-volume
+          configMap:
+            name: pyms-configmap
