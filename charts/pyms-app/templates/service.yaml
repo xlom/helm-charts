@@ -1,7 +1,5 @@
 kind: Service
 apiVersion: v1
-# metadata:
-#   name: pyms-scaffold-v1-svc
 metadata:
   name: {{ include "pyms-app.fullname" . }}
   labels:
