@@ -123,4 +123,15 @@ entries:
     urls:
     - https://github.com/xlom/helm-charts/releases/download/my-app-0.1.0/my-app-0.1.0.tgz
     version: 0.1.0
+  pyms-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-02-27T18:55:00.568192966Z"
+    description: A Helm chart for pyms-app
+    digest: 7ae12d04a5080fd6f11af69072c6b5ab326b28bb24b4bdca67a1a26ca2e84fbc
+    name: pyms-app
+    type: application
+    urls:
+    - https://github.com/xlom/helm-charts/releases/download/pyms-app-0.1.7/pyms-app-0.1.7.tgz
+    version: 0.1.7
 generated: "2021-12-17T20:47:51.53153242Z"
