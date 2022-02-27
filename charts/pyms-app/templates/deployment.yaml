@@ -15,7 +15,7 @@ spec:
       containers:
       - name: pyms-scaffold
         image: {{ .Values.image.repository }}
-        #imagePullPolicy: {{ .Values.image.pullPolicy }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 5000
         resources:
