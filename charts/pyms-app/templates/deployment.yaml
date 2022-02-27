@@ -2,29 +2,43 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pyms-scaffold-v1
+metadata:
+  name: {{ include "pyms-app.fullname" . }}
+  labels:
+    {{- include "pyms-app.labels" . | nindent 4 }}
 spec:
+  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
-      app: scaffold-v1
+      {{- include "pyms-app.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app: scaffold-v1
+        {{- include "pyms-app.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "pyms-app.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-      - name: pyms-scaffold
-        image: {{ .Values.image.repository }}
+      - name: {{ .Chart.Name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 5000
         resources:
-          requests:
-            memory: "64Mi"
-            cpu: "200m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+          {{- toYaml .Values.resources | nindent 12 }}
         livenessProbe:
           httpGet:
             path: /healthz/live
@@ -39,6 +53,18 @@ spec:
         volumeMounts:
           - mountPath: /usr/share/microservice
             name: ms-config-volume
+      {{- with .Values.nodeSelector }}
+        nodeSelector:
+          {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+        affinity:
+          {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+        tolerations:
+          {{- toYaml . | nindent 8 }}
+      {{- end }}
       volumes:
         - name: ms-config-volume
           configMap:
