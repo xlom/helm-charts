@@ -5,7 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: acrazpyms.azurecr.io/app_pyms_scaffold_app
+  #repository: acrazpyms.azurecr.io/app_pyms_scaffold_app
+  repository: app_pyms_scaffold_app
   pullPolicy: Never
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
