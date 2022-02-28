@@ -14,6 +14,16 @@ entries:
   istio-ingress:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-02-28T00:04:58.818795385Z"
+    description: A Helm chart for Kubernetes
+    digest: 31d651657371153f57b29e62f59198a1c0f75004dbc58aab9c5ee2b915959522
+    name: istio-ingress
+    type: application
+    urls:
+    - https://github.com/xlom/helm-charts/releases/download/istio-ingress-0.1.4/istio-ingress-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-01-05T18:31:43.877540913Z"
     description: A Helm chart for Kubernetes
     digest: fb1feda809f357ddc01fd024c1fe5401424a411b4198ca3be4c9818589979441
