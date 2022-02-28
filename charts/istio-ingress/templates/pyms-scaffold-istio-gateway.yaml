@@ -28,6 +28,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: pyms-scaffold-v1-svc
+        host: pyms-pyms-app
         port:
           number: {{ .Values.virtualService.port }}
