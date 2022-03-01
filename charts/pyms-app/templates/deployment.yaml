@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pyms-scaffold-v1
-metadata:
   name: {{ include "pyms-app.fullname" . }}
   labels:
     {{- include "pyms-app.labels" . | nindent 4 }}
@@ -68,4 +66,4 @@ spec:
       volumes:
         - name: ms-config-volume
           configMap:
-            name: pyms-configmap
+            name: {{ include "pyms-app.fullname" . }}

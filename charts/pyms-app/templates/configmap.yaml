@@ -1,24 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: pyms-configmap
+  name: {{ include "pyms-app.fullname" . }}
+  labels:
+    {{- include "pyms-app.labels" . | nindent 4 }}
 data:
   # When the config map is mounted as a volume, these will be created as files.
-  config.yaml: |-
-    pyms:
-      services:
-        metrics: true
-        swagger:
-          path: "project/swagger"
-          file: "swagger.yaml"
-          url: "/ui/"
-          project_dir: "project.views"
-      config:
-        DEBUG: false
-        TESTING: false
-        APP_NAME: pyms-app
-        APPLICATION_ROOT : /
-        SQLALCHEMY_TRACK_MODIFICATIONS: true
-        SECRET_KEY: "gjr39dkjn344_!67#"
-        DATABASE: db.sqlite3
-        SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://allocation:abc123@postgres:5432/postgres
+  config.yaml: {{ .Values.configMap.configValue }}
