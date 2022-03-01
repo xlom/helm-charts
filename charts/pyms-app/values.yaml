@@ -103,5 +103,5 @@ affinity: {}
 #         SQLALCHEMY_DATABASE_URI: sqlite:///db.sqlite3
 
 configMap:
-   configValue: {"pyms":{"services":{"requests":true,"swagger":{"path":"","file":"swagger.yaml"}},"config":{"DEBUG":true,"TESTING":true,"APP_NAME":"Python Microservice","APPLICATION_ROOT":"/","DATABASE":"db.sqlite3","SQLALCHEMY_DATABASE_URI":"sqlite:///db.sqlite3"}}}
+   configValue: {"pyms":{"services":{"requests":true,"swagger":{"path":"project/swagger","file":"swagger.yaml"}},"config":{"DEBUG":true,"TESTING":true,"APP_NAME":"Python Microservice","APPLICATION_ROOT":"/","DATABASE":"db.sqlite3","SQLALCHEMY_DATABASE_URI":"sqlite:///db.sqlite3"}}}
     
