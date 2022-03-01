@@ -6,4 +6,4 @@ metadata:
     {{- include "pyms-app.labels" . | nindent 4 }}
 data:
   # When the config map is mounted as a volume, these will be created as files. {{ .Values.configMap.configValue }}
-  config.json: {"pyms":{"services":{"requests":true,"swagger":{"path":"","file":"swagger.yaml"}},"config":{"DEBUG":true,"TESTING":true,"APP_NAME":"Python Microservice","APPLICATION_ROOT":"/","DATABASE":"db.sqlite3","SQLALCHEMY_DATABASE_URI":"sqlite:///db.sqlite3"}}}
+  config.json: '{"pyms":{"services":{"requests":true,"swagger":{"path":"","file":"swagger.yaml"}},"config":{"DEBUG":true,"TESTING":true,"APP_NAME":"Python Microservice","APPLICATION_ROOT":"/","DATABASE":"db.sqlite3","SQLALCHEMY_DATABASE_URI":"sqlite:///db.sqlite3"}}}'
