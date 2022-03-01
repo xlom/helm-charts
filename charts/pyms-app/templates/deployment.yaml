@@ -47,7 +47,7 @@ spec:
             port: 5000
         env:
           - name: PYMS_CONFIGMAP_FILE
-            value: "/usr/share/microservice/config.yaml"
+            value: "/usr/share/microservice/config.json"
         volumeMounts:
           - mountPath: /usr/share/microservice
             name: ms-config-volume
