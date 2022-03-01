@@ -136,6 +136,16 @@ entries:
   pyms-app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-03-01T21:51:02.161565585Z"
+    description: A Helm chart for pyms-app
+    digest: 010614fcffe088bd36bb2beeb35a9da356503d7c338ba9f90d2b1bd828aea2a4
+    name: pyms-app
+    type: application
+    urls:
+    - https://github.com/xlom/helm-charts/releases/download/pyms-app-0.3.6/pyms-app-0.3.6.tgz
+    version: 0.3.6
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-03-01T21:45:23.045231564Z"
     description: A Helm chart for pyms-app
     digest: d2284cb1511e98c38e7a2918b452a81dd8db266dbd17e790234ac152a6c90cbb
