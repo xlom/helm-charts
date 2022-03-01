@@ -7,4 +7,4 @@ metadata:
 data:
   # When the config map is mounted as a volume, these will be created as files.
   config.yaml: |-
-    {{ .Values.configMap.configValue | indent 2 }}
+  {{ .Values.configMap.configValue | indent 1 }}
