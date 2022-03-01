@@ -6,4 +6,4 @@ metadata:
     {{- include "pyms-app.labels" . | nindent 4 }}
 data:
   # When the config map is mounted as a volume, these will be created as files.
-  config.yaml: {{ .Values.configMap.configValue }}
+  config.yaml: {{ .Values.configMap.configValue | indent 2 }}
