@@ -5,7 +5,6 @@
 replicaCount: 1
 
 image:
-  #repository: acrazpyms.azurecr.io/app_pyms_scaffold_app
   repository: app_pyms_scaffold_app
   pullPolicy: Never
   # Overrides the image tag whose default is the chart appVersion.
@@ -82,26 +81,5 @@ tolerations: []
 
 affinity: {}
 
-myDb: sqlite:///db.sqlite3
-
-# pyms:
-#       services:
-#         metrics: true
-#         swagger:
-#           path: "project/swagger"
-#           file: "swagger.yaml"
-#           url: "/ui/"
-#           project_dir: "project.views"
-#       config:
-#         DEBUG: false
-#         TESTING: false
-#         APP_NAME: pyms-app
-#         APPLICATION_ROOT : /
-#         SQLALCHEMY_TRACK_MODIFICATIONS: true
-#         SECRET_KEY: "gjr39dkjn344_!67#"
-#         DATABASE: db.sqlite3
-#         SQLALCHEMY_DATABASE_URI: sqlite:///db.sqlite3
-
 configMap:
-   #configValue: {"pyms":{"services":{"requests":true,"swagger":{"path":"project/swagger","file":"swagger.yaml","url":"/ui/","project_dir":"project.views"}},"config":{"DEBUG":true,"TESTING":true,"APP_NAME":"Python Microservice","APPLICATION_ROOT":"/","DATABASE":"db.sqlite3","SQLALCHEMY_TRACK_MODIFICATIONS":"true","SQLALCHEMY_DATABASE_URI":{{ .Values.myDb }}}}}
-    configValue: {}
+  configValue: '{"pyms":{"services":{"swagger":{"path":"project/swagger","file":"swagger.yaml","url":"/ui/","project_dir":"project.views"}},"config":{"DEBUG":true,"TESTING":true,"APP_NAME":"pyms-app","APPLICATION_ROOT":"/","DATABASE":"db.sqlite3","SQLALCHEMY_TRACK_MODIFICATIONS":"true","SQLALCHEMY_DATABASE_URI":"sqlite:///project/db.sqlite3"}}}'
